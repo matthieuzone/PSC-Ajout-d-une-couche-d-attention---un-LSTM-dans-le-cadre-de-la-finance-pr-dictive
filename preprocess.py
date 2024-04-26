@@ -6,7 +6,7 @@ import pandas_ta as ta
 ### Fourni par LUSIS sauf les features EMA et Stochastiques ###
 
 pair = 'EURUSD'
-df = ai.read_timeseries_from_csv(filename=f'../{pair}_1H_UTC.csv',closedatetimeref=False,totimescale='1H',fromtimezone='UTC',totimezone='Europe/Paris')
+df = ai.read_timeseries_from_csv(filename=f'./{pair}_1H_UTC.csv',closedatetimeref=False,totimescale='1H',fromtimezone='UTC',totimezone='Europe/Paris')
 # print((df['close'].shift(-1) - df['close']))
 lab.add_close_close(df,nbars=8,label=(0,1))
 lab.add_close_close(df,nbars=16,label=(0,1))
