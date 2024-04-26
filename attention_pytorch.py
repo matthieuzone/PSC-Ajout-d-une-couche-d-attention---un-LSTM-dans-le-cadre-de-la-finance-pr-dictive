@@ -2,20 +2,18 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 from torch.nn.functional import tanh
-
-def focal_loss(alpha, gamma, num_classes):
+def focal_loss(alpha, gamma):
     # définit une fonction focal loss en fonction des paramètres et la renvoie
-
     def focal_loss_fixed(y_true, y_pred):
-        ### Permet d'éviter les 0 et 1 avant le log ###
+        
         epsilon = 1e-9
-        y_pred = torch.clamp(y_pred, epsilon, 1. - epsilon)
+        y_pred = torch.clamp(y_pred, epsilon, 1. - epsilon) # Permet d'éviter les 0 et 1 avant le log
 
         ### Calcul de la focal loss ###
         cross_entropy = -y_true * torch.log(y_pred)
-        loss = alpha * torch.pow(1 - y_pred, gamma) * cross_entropy
-        return torch.mean(torch.sum(loss, dim=1))
-    
+        alpha_ = torch.tensor([alpha,1-alpha])
+        loss = alpha_ * torch.pow(1 - y_pred, gamma) * cross_entropy
+        return torch.sum(loss)
     return focal_loss_fixed
 
 
