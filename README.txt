@@ -8,3 +8,5 @@ Pour l'optimisation d'hyperparamètres (Population based training, random search
 le fichier backtest.ipynb permet ensuite de tester un modèle à l'aide des outils de backtest
 
 IMPORTANT : pour que PBT_pytorch.ipynb fonctionne, il faut créer un dossier 'ray_checkpoints' et 'ray_results' à la racine du disque dur, s'il ne le fait pas tout seul.
+
+Dans les notebooks, les outputs affichés actuellement ne rendent pas compte de tous les resultats obtenus, car il ont servi à plusierus experimentations, mais les executer de manière linéaire renvoie un résultat correct.
